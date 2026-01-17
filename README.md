@@ -31,6 +31,7 @@ O projeto foi desenvolvido inteiramente em **Python** utilizando as seguintes bi
 ├── testing_imgs.py
 ├── model.p
 └── data.pickle
+```
 
 ## ⚙️ Como Rodar o Projeto
 
@@ -40,6 +41,7 @@ Instale as dependências necessárias:
 
 ```bash
 pip install opencv-python mediapipe scikit-learn numpy
+```
 
 ### 2. Coleta de Dados (Opcional)
 
@@ -47,6 +49,7 @@ Execute o script para coletar imagens pela webcam:
 
 ```bash
 python collect_imgs.py
+```
 
 ### 3. Criando o Dataset
 
@@ -54,6 +57,7 @@ Gere o arquivo `data.pickle` a partir das imagens coletadas:
 
 ```bash
 python create_dataset.py
+```
 
 ### 4. Treinando o Modelo
 
@@ -61,6 +65,7 @@ Treine o modelo de machine learning e gere o arquivo `model.p`:
 
 ```bash
 python training.py
+```
 
 ### 5. Testando em Tempo Real
 
@@ -68,6 +73,7 @@ Inicie a tradução dos gestos em tempo real usando a webcam:
 
 ```bash
 python testing.py
+```
 
 ## 🤝 Contribuição
 
