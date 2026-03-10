@@ -1,89 +1,137 @@
-# Tradutor de Libras 🤟📷
+<div align="center">
 
-Este projeto é um sistema de visão computacional capaz de reconhecer e traduzir gestos da Língua Brasileira de Sinais (LIBRAS) em tempo real ou através de imagens estáticas. Ele utiliza técnicas de processamento de imagem e aprendizado de máquina para identificar os sinais das mãos.
+# 🤟 TradutorDeLibras
 
-## 🚀 Funcionalidades
+### Real-time Brazilian Sign Language (LIBRAS) recognition and translation system
 
-- **Coleta de Dados**: Script automatizado para capturar imagens das mãos e criar uma base de dados personalizada.
-- **Processamento de Dataset**: Conversão das imagens capturadas em pontos de referência (landmarks) das mãos.
-- **Treinamento de Modelo**: Algoritmo de Classificação (Machine Learning) para aprender a diferenciar os gestos.
-- **Tradução em Tempo Real**: Utiliza a webcam para detectar e exibir a tradução do sinal.
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![MediaPipe](https://img.shields.io/badge/MediaPipe-Latest-00C853?style=for-the-badge&logo=google&logoColor=white)](https://mediapipe.dev)
+[![YOLOv11](https://img.shields.io/badge/YOLOv11-Ultralytics-FF6F00?style=for-the-badge)](https://ultralytics.com)
+[![FastAPI](https://img.shields.io/badge/FastAPI-Latest-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![OpenCV](https://img.shields.io/badge/OpenCV-4.x-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)](https://opencv.org)
 
-## 🛠️ Tecnologias Utilizadas
+</div>
 
-O projeto foi desenvolvido inteiramente em **Python** utilizando as seguintes bibliotecas:
+---
 
-- **[OpenCV](https://opencv.org/)**
-- **[MediaPipe](https://developers.google.com/mediapipe)**
-- **[Scikit-learn](https://scikit-learn.org/)**
-- **[Numpy](https://numpy.org/)**
-- **Pickle**
+## 📌 About
 
-## 📂 Estrutura do Projeto
+**TradutorDeLibras** is an AI-powered system that detects and translates Brazilian Sign Language (LIBRAS) gestures into text in real time. Built as an applied research project at **LAPISCO AI Research Lab (IFCE)**, it combines hand landmark detection with deep learning gesture classification to make communication more accessible for the deaf and hard-of-hearing community.
+
+---
+
+## ✨ Features
+
+- 📸 **Automated Data Collection** — script-based webcam capture to build a custom LIBRAS dataset
+- 🤚 **Hand Landmark Extraction** — MediaPipe identifies 21 key hand points per frame for precise gesture mapping
+- 🧠 **Deep Learning Classification** — YOLOv11 model trained on LIBRAS gesture data for robust real-time recognition
+- 🎥 **Real-time Translation** — live webcam feed with gesture detection and text output
+- 🖼️ **Static Image Testing** — support for gesture recognition on individual images
+- ⚡ **FastAPI Backend** — lightweight REST API to serve model inference
+
+---
+
+## 🏗️ Architecture
+
+```
+Camera Input / Static Image
+         │
+         ▼
+  MediaPipe (Hand Landmark Detection — 21 keypoints)
+         │
+         ▼
+  YOLOv11 (Gesture Classification)
+         │
+         ▼
+  FastAPI (Inference API)
+         │
+         ▼
+  Text Output (Translated Sign)
+```
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Hand Detection | MediaPipe |
+| Gesture Classification | YOLOv11 (Ultralytics) |
+| Image Processing | OpenCV |
+| Backend / API | FastAPI (Python) |
+| Numerical Processing | NumPy |
+
+---
+
+## 📂 Project Structure
 
 ```bash
 ├── data/
 ├── images/
-├── collect_imgs.py
-├── create_dataset.py
-├── training.py
-├── testing.py
-├── testing_imgs.py
-├── model.p
-└── data.pickle
+├── collect_imgs.py       # Automated webcam data collection
+├── create_dataset.py     # Converts images to hand landmarks
+├── training.py           # Model training pipeline
+├── testing.py            # Real-time webcam testing
+├── testing_imgs.py       # Static image testing
+├── model.p               # Trained model
+└── data.pickle           # Processed landmark dataset
 ```
 
-## ⚙️ Como Rodar o Projeto
+---
 
-### 1. Pré-requisitos
+## ⚙️ Getting Started
 
-Instale as dependências necessárias:
+### Prerequisites
 
 ```bash
-pip install opencv-python mediapipe scikit-learn numpy
+pip install opencv-python mediapipe ultralytics fastapi uvicorn numpy
 ```
 
-### 2. Coleta de Dados (Opcional)
-
-Execute o script para coletar imagens pela webcam:
+### 1. Data Collection *(optional — skip if using existing dataset)*
 
 ```bash
 python collect_imgs.py
 ```
 
-### 3. Criando o Dataset
-
-Gere o arquivo `data.pickle` a partir das imagens coletadas:
+### 2. Create Dataset
 
 ```bash
 python create_dataset.py
 ```
 
-### 4. Treinando o Modelo
-
-Treine o modelo de machine learning e gere o arquivo `model.p`:
+### 3. Train the Model
 
 ```bash
 python training.py
 ```
 
-### 5. Testando em Tempo Real
-
-Inicie a tradução dos gestos em tempo real usando a webcam:
+### 4. Run Real-time Translation
 
 ```bash
 python testing.py
 ```
 
-## 🤝 Contribuição
+### 5. Run the API
 
-Contribuições são bem-vindas!  
-Sinta-se à vontade para abrir uma **Issue** ou enviar um **Pull Request**.
-
-## 📄 Licença
-
-Este projeto está sob a licença **MIT**.
+```bash
+uvicorn main:app --reload
+```
 
 ---
 
-Desenvolvido por **Derick Bessa**
+## 🤝 Contributing
+
+Contributions are welcome!
+Feel free to open an **Issue** or submit a **Pull Request**.
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+<div align="center">
+Developed by <a href="https://github.com/DerickBessa"><strong>Derick Bessa</strong></a> @ <strong>LAPISCO AI Research Lab</strong>
+</div>
